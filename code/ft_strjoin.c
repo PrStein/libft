@@ -1,54 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/22 15:26:12 by sadjigui          #+#    #+#             */
+/*   Updated: 2021/05/22 15:40:20 by sadjigui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
-int ft_strlen(char const *src)
+int	ft_strlen(char const *src)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (src[i])
-  i++;
-  return (i);
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
 }
 
-char *ft_strcat(char const *s1, char const *s2)
+char	*ft_strcat(char const *s1, char const *s2, char *dest)
 {
-  int i;
-  int j;
-  char *dest;
+	int		i;
+	int		j;
 
-  i = 0;
-  j = 0;
-  while (s1[i])
-  {
-    dest[j] = s1[i];
-    i++;
-    j++;
-  }
-  i = 0;
-  while (s2[i])
-  {
-    dest[j] = s2[i];
-    i++;
-    j++;
-  }
-  return (dest);
-}
-char *ft_strjoin(char const *s1, char const *s2)
-{
-  int i;
-  char *dest;
-
-  i = ft_strlen(s1) + ft_strlen(s2);
-  if (!(dest = malloc(sizeof(char) * i + 1)))
-  return (NULL);
-  dest = ft_strcat(s1, s2);
-  return (dest);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		dest[j] = s1[i];
+		i++;
+		j++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		dest[j] = s2[i];
+		i++;
+		j++;
+	}
+	return (dest);
 }
 
-#include <stdio.h>
-int main(int ac, char **av)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-  (void)ac;
-  printf("%s\n", ft_strcat(av[1], av[2]));
+	int		i;
+	char	*dest;
+
+	dest = NULL;
+	i = ft_strlen(s1) + ft_strlen(s2);
+	dest = malloc(sizeof(char) * i + 1);
+	if (!dest)
+		return (NULL);
+	dest = ft_strcat(s1, s2, dest);
+	return (dest);
 }

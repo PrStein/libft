@@ -1,44 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/22 15:05:42 by sadjigui          #+#    #+#             */
+/*   Updated: 2021/05/22 15:25:21 by sadjigui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
-/*int ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (str[i])
-  i++;
-  return (i);
-}*/
-
-char *ft_strcpy(char *dest, const char *src)
-{
-  int i;
-
-  i = 0;
-  while (src[i])
-  {
-    dest[i] = src[i];
-    i++;
-  }
-  return (dest);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char *ft_strdup(const char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
-  int i;
-  char *copy = NULL;
+	int	i;
 
-  i = ft_strlen(copy);
-  if (!(copy = malloc(sizeof(char) * i + 1)))
-  return (NULL);
-  copy = ft_strcpy(copy, src);
-  return (copy);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
 }
 
-#include <stdio.h>
-int main()
+char	*ft_strdup(const char *src)
 {
-  char src[] = "je ne sais pas comment";
-  printf("%s\n", ft_strdup(src));
+	int		i;
+	char	*copy;
+
+	copy = NULL;
+	i = ft_strlen(src);
+	copy = malloc(sizeof(char) * i + 1);
+	if (!copy)
+		return (NULL);
+	copy = ft_strcpy(copy, src);
+	return (copy);
 }

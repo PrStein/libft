@@ -1,40 +1,39 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/22 15:43:29 by sadjigui          #+#    #+#             */
+/*   Updated: 2021/05/22 15:43:37 by sadjigui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int strlen(char *str)
+#include <stdio.h>
+
+int		ft_strlen(const char *str)
 {
-  int i;
+	int i;
 
-  i = 0;
-  while (str[i])
-  {
-    i++;
-  }
-  return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
-
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 {
-  unsigned int i;
-  unsigned int j;
+	size_t i;
 
-  i = ft_strlen(src);
-  j = 0;
-
-  if (i + 1 < size)
-  while (j < i + 1)
-  {
-    dest[j] = src[j];
-    j++;
-  }
-  j = 0;
-  else if (size)
-  {
-    while (j < size - 1)
-    {
-      dest[j] = src[j];
-      j++;
-    }
-    dest[j] = '\0';
-  }
-  return (i);
+	i = 0;
+	if (!dest && !src)
+		return (0);
+	while (src[i] && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (size > 0)
+		dest[i] = '\0';
+	return (ft_strlen(src));
 }
