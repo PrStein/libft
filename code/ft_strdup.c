@@ -1,6 +1,7 @@
 #include <stdlib.h>
+#include "libft.h"
 
-int ft_strlen(char *str)
+/*int ft_strlen(char *str)
 {
   int i;
 
@@ -8,7 +9,7 @@ int ft_strlen(char *str)
   while (str[i])
   i++;
   return (i);
-}
+}*/
 
 char *ft_strcpy(char *dest, const char *src)
 {

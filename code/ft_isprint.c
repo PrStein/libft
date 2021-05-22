@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int ft_isprint(int i)
 {
   char c;

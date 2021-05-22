@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int ft_space(const char *str)
 {
   int i;
