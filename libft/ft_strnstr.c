@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 14:58:49 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/25 15:03:54 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:30:00 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t size)
 	i = 0;
 	j = 0;
 	if (*to_find == '\0')
-		return (str);
+		return ((char *)str);
 	while (i < size)
 	{
 		if (to_find[j] == '\0')
-			return (&str[i]);
+			return ((char *)&str[i]);
 		if (str[i + j] == to_find[j])
 			j++;
 		else

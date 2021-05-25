@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 14:48:34 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/25 14:56:27 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:57:53 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memchr(const void *mem, int ch, size_t size)
 	while (i < size)
 	{
 		if (*(unsigned char *)(mem + i) == (unsigned char)ch)
-			return (*(unsigned char *)(mem + i));
+			return ((unsigned char *)(mem));
 		i++;
 	}
 	return (NULL);

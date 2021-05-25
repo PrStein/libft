@@ -6,10 +6,11 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 15:43:29 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/22 15:43:37 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:07:33 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 size_t		ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t i;

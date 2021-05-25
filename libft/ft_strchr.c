@@ -6,11 +6,11 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 13:33:40 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/20 13:38:18 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:06:11 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *str, int s)
+char	*ft_strchr(const char *str, int c)
 {
 	int i;
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *str, int s)
 	while (str[i])
 	{
 		if (str[i] == c)
-			return (c);
+			return ((char*)str);
 		i++;
 	}
 	return (0);

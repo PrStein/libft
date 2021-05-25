@@ -6,20 +6,13 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 13:38:42 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/20 13:42:43 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:32:30 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-char	*ft_strrchr(const char *str, int s)
+char	*ft_strrchr(const char *str, int c)
 {
 	int i;
 
@@ -27,7 +20,7 @@ char	*ft_strrchr(const char *str, int s)
 	while (str[i])
 	{
 		if (str[i] == c)
-			return (c);
+			return ((char *)str);
 		i--;
 	}
 	return (0);
