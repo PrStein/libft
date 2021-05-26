@@ -3,24 +3,24 @@
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
     unsigned int i;
-    int shit;
-    int z;
+    unsigned int z;
     char *dest;
 
     dest = NULL;
     z = 0;
-    dest = NULL;
     i = 0;
-    shit = len - start;
-    while (i < start)
-        i++;
-    if (!(dest = malloc(sizeof(char) * shit + 1)))
-        return (NULL);
-    while (s[i] && i < len)
-    {
-        dest[z] = s[i];
-        i++;
-        z++;
-    }
+//    if (start <= len)
+//    {
+        while (i < start)
+            i++;
+        dest = malloc(sizeof(char) * len + 1);
+        if (!dest)
+            return (NULL);
+        while (i < len)
+            dest[z++] = s[i++];
+//    }
+        while(dest[z])
+            dest[z++] = '\0';
+//    dest[z] = '\0';
     return (dest);
 }

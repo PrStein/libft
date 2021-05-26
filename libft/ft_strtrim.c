@@ -1,17 +1,17 @@
 #include "libft.h"
 
-int ft_charset(char c, char const *charset)
+int ft_charset_trim(char c, char const *charset)
 {
-  int i;
+    int i;
 
-  i = 0;
-  while (charset[i])
-  {
-    if (c == charset[i])
-    return (1);
-    i++;
-  }
-  return (0);
+    i = 0;
+    while (charset[i])
+    {
+        if (c == charset[i])
+            return (1);
+        i++;
+    }
+    return (0);
 }
 
 int ft_strtrim_count(char const *s1, char const *set)
@@ -38,21 +38,21 @@ int ft_strtrim_count(char const *s1, char const *set)
 char *ft_strtrim_cut(char const *s1, char const *set, char *dest)
 {
   int i;
-  int j;
+ // int j;
   int c;
 
   i = 0;
   c = 0;
   while (s1[i])
   {
-    j = 0;
-    while (s1[i] && ft_charset(s1[i], set) == 0)
+    //j = 0;
+    while (s1[i] && ft_charset_trim(s1[i], set) == 0)
     {
       dest[c] = s1[i];
       c++;
       i++;
     }
-    while (s1[i] && ft_charset(s1[i], set) == 1)
+    while (s1[i] && ft_charset_trim(s1[i], set) == 1)
     i++;
   }
   return (dest);
@@ -67,4 +67,10 @@ char *ft_strtrim(char const *s1, char const *set)
     dest = ft_calloc(i, 1);
     dest = ft_strtrim_cut(s1, set, dest);
     return (dest);
+}
+#include <stdio.h>
+int main(int ac, char **av)
+{
+  (void)ac;
+  printf("%s\n", ft_strtrim(av[1], av[2]));
 }

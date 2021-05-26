@@ -10,18 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strcpy(char *dest, const char *src)
 {
@@ -33,12 +22,13 @@ char	*ft_strcpy(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
 char	*ft_strdup(const char *src)
 {
-	int		i;
+	size_t		i;
 	char	*copy;
 
 	copy = NULL;

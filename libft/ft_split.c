@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+int	ft_charset(char a, char c)
+{
+	int	i;
+
+	i = 0;
+	if (a == c)
+		return (1);
+	else
+		return (0);
+}
 
 char	**free_tab(char **tab)
 {
@@ -23,17 +33,6 @@ char	**free_tab(char **tab)
 		i++;
 	}
 	return (tab);
-}
-
-int	ft_charset(char a, char c)
-{
-	int	i;
-
-	i = 0;
-	if (a == c)
-		return (1);
-	else
-		return (0);
 }
 
 char	**count_words(char const *s, char c, char **tab)

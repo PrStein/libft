@@ -19,6 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 	trace = malloc(count * size);
 	if (!trace)
 		return (NULL);
-	ft_bzero(trace, count);
+	if (trace)
+		ft_bzero(trace, count);
 	return (trace);
 }
