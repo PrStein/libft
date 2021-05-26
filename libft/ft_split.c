@@ -124,6 +124,8 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 
 	tab = NULL;
+	if (!s)
+		return (0);
 	while (*s && ft_charset(*s, c) == 1)
 		s++;
 	tab = count_words(s, c, tab);
