@@ -22,7 +22,7 @@ int	ft_count_nb(int nb)
 		nb /= 10;
 		i++;
 	}
-	if (nb > 0)
+	if (nb < 0)
 	{
 		nb = -nb;
 		i++;
@@ -40,7 +40,6 @@ char	*ft_itoa(int n)
 	i = ft_count_nb(n);
 	nb = n;
 	sign = 0;
-	dest = NULL;
 	dest = malloc(sizeof(char) * i + 1);
 	if (!dest)
 		return (NULL);
@@ -49,11 +48,11 @@ char	*ft_itoa(int n)
 		sign = 1;
 		*dest = '-';
 	}
+	dest[i] = '\0';
 	while (nb >= 0 + sign)
 	{
-		dest[i] = nb % 10 + '0';
+		dest[--i] = nb % 10 + '0';
 		nb /= 10;
-		i--;
 	}
 	return (dest);
 }

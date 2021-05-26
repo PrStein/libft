@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_charset(char a, char c)
 {
 	int	i;
@@ -32,6 +33,7 @@ char	**free_tab(char **tab)
 		free (tab[i]);
 		i++;
 	}
+	free (tab);
 	return (tab);
 }
 
