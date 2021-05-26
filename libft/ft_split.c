@@ -6,11 +6,24 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 14:53:23 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/22 15:05:01 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/26 11:59:44 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	**free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free (tab[i]);
+		i++;
+	}
+	return (tab);
+}
 
 int	ft_charset(char a, char c)
 {
@@ -63,11 +76,20 @@ char	**count_letters(char const *s, char c, char **tab)
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
 		if (!tab[words])
+		{
+			free_tab(tab);
 			return (NULL);
+		}
 		tab[words][letters] = '\0';
 		words++;
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
+	}
+	i = 0;
+	while (tab[i])
+	{
+		free (tab[i]);
+		i++;
 	}
 	return (tab);
 }
@@ -106,5 +128,6 @@ char	**ft_split(char const *s, char c)
 	tab = count_words(s, c, tab);
 	tab = count_letters(s, c, tab);
 	tab = ft_full(s, c, tab);
+
 	return (tab);
 }
