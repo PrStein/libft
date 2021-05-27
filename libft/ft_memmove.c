@@ -4,9 +4,9 @@ void *ft_memmove(void *dest, const void *src, size_t size)
 {
     size_t i;
 
-    if (dest > src)
+/*    if (dest > src)
     {
-        i = size - 1;
+        i = size;
         while (i >= 0)
         {
             *(unsigned char*)(dest + i) = *(unsigned char*)(src + i);
@@ -14,13 +14,13 @@ void *ft_memmove(void *dest, const void *src, size_t size)
         }
     }
     else
-    {
+    {*/
         i = 0;
         while (i < size)
         {
             *(unsigned char*)(dest + i) = *(unsigned char*)(src + i);
             i++;
         }
-    }
+    
     return (dest);
 }
