@@ -1,77 +1,72 @@
 #include "libft.h"
 
-int ft_charset_trim(char c, char const *charset)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (src[i] && i < len)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
+}
+
+int ft_ischarset(char c, const char *set)
 {
     int i;
 
     i = 0;
-    while (charset[i])
+    while (set[i])
     {
-        if (c == charset[i])
+        if (c == set[i])
             return (1);
         i++;
     }
     return (0);
 }
 
-int ft_strtrim_count(char const *s1, char const *set)
-{
-  int i;
-  int j;
-  int z;
-
-  i = 0;
-  z = 0;
-  while (s1[i])
-  {
-      j = 0;
-    while (s1[i] && ft_charset_trim(s1[i], &set[j]) == 0)
-    {
-        z++;
-        j++;
-    }
-    while (s1[i] && ft_charset_trim(s1[i], &set[j]) == 1)
-        i++;
-}
-
-  return (z);
-}
-char *ft_strtrim_cut(char const *s1, char const *set, char *dest)
-{
-  int i;
- // int j;
-  int c;
-
-  i = 0;
-  c = 0;
-  while (s1[i])
-  {
-    //j = 0;
-    while (s1[i] && ft_charset_trim(s1[i], set) == 0)
-    {
-      dest[c] = s1[i];
-      c++;
-      i++;
-    }
-    while (s1[i] && ft_charset_trim(s1[i], set) == 1)
-    i++;
-  }
-  return (dest);
-}
-char *ft_strtrim(char const *s1, char const *set)
+int start_index(const char *s1, const char *set)
 {
     int i;
-    char *dest;
 
-    dest = NULL;
-    i = ft_strtrim_count(s1, set) + 1;
-    dest = ft_calloc(i, 1);
-    dest = ft_strtrim_cut(s1, set, dest);
-    return (dest);
+    i = 0;
+    while (s1[i] && ft_ischarset(s1[i], set))
+        i++;
+    return (i);
 }
-#include <stdio.h>
-int main(int ac, char **av)
+
+int end_index(const char *s1, const char *set)
 {
-  (void)ac;
-  printf("%s\n", ft_strtrim(av[1], av[2]));
+    int		end;
+	size_t	s1_len;
+
+	end = 0;
+	s1_len = ft_strlen((char *)s1);
+	while (ft_ischarset(s1[s1_len - end - 1], set))
+		end++;
+	return (s1_len - end);
+}
+
+char *ft_strtrim(char const *s1, char const *set)
+{
+    char *dest;
+    int start;
+    int end;
+
+    start = start_index(s1, set);
+    if (start >= (int)ft_strlen(s1))
+		return ("\0");
+    end = end_index(s1, set);
+    if (!(dest = (char *)malloc((end - start + 1) * sizeof(char))))
+		return (0);
+    dest = ft_strncpy(dest, s1 + start, end - start);
+    dest[end - start] = '\0';
+    return (dest);
 }

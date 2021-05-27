@@ -20,6 +20,6 @@ void	*ft_calloc(size_t count, size_t size)
 	if (!trace)
 		return (NULL);
 	if (trace)
-		ft_bzero(trace, count);
+		ft_bzero(trace, count * size);
 	return (trace);
 }
