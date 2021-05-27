@@ -4,16 +4,26 @@
 
 int main (void)
 {
+    char	*str = "i just want this part #############";
+    size_t	size = 20;
 
-    char	*s1 = "MZIRIBMZIRIBMZE123";
-			char	*s2 = "MZIRIBMZE";
-			size_t	max = strlen(s2);
+    char	*ret = ft_substr(str, 5, size);
+    char	*ret2 = substr(str, 5, size);
 
-			char	*i1 = strnstr(s1, s2, max);
-			char	*i2 = ft_strnstr(s1, s2, max);
 
-            printf("o- %s\n", i1);
-            printf("m- %s\n", i2);
+    printf("%s\n", ret2);
+    printf("%s\n", ret);
+
+//
+//     char	*s1 = "MZIRIBMZIRIBMZE123";
+// 			char	*s2 = "MZIRIBMZE";
+// 			size_t	max = strlen(s2);
+//
+// 			char	*i1 = strnstr(s1, s2, max);
+// 			char	*i2 = ft_strnstr(s1, s2, max);
+//
+//             printf("o- %s\n", i1);
+//            printf("m- %s\n", i2);
 
 
 
