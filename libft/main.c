@@ -5,14 +5,16 @@
 int main (void)
 {
 
-    char	*src = "abbbbbbbb";
+    char	*s1 = "MZIRIBMZIRIBMZE123";
+			char	*s2 = "MZIRIBMZE";
+			size_t	max = strlen(s2);
 
-    		char	*d1 = strrchr(src, 'a');
-    		char	*d2 = ft_strrchr(src, 'a');
-        printf("dest 1 original |%s\n", d1);
-        printf("dest 1 mine     |%s\n", d2);
-//        printf("dest 2 original |%s\n", d1);
-//        printf("dest 2 mine     |%s\n", d2);
+			char	*i1 = strnstr(s1, s2, max);
+			char	*i2 = ft_strnstr(s1, s2, max);
+
+            printf("o- %s\n", i1);
+            printf("m- %s\n", i2);
+
 
 
     /*char	dst1[0xF0];

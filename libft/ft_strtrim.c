@@ -24,15 +24,16 @@ int ft_strtrim_count(char const *s1, char const *set)
   z = 0;
   while (s1[i])
   {
-    j = 0;
-    while (set[j])
+      j = 0;
+    while (s1[i] && ft_charset_trim(s1[i], &set[j]) == 0)
     {
-      if (s1[i] == set[j])
         z++;
-      j++;
+        j++;
     }
-    i++;
-  }
+    while (s1[i] && ft_charset_trim(s1[i], &set[j]) == 1)
+        i++;
+}
+
   return (z);
 }
 char *ft_strtrim_cut(char const *s1, char const *set, char *dest)
