@@ -12,47 +12,57 @@
 
 #include "libft.h"
 
-int	ft_count_nb(int nb)
+int    base_len(long nb)
 {
-	int	i;
+    int    len;
 
-	i = 1;
-	while (nb >= 10)
-	{
-		nb /= 10;
-		i++;
-	}
-	if (nb < 0)
-	{
-		nb = -nb;
-		i++;
-	}
-	return (i);
+    len = 1;
+    if (nb < 0)
+    {
+        nb = -nb;
+        len++;
+    }
+    while (nb >= 10)
+    {
+        nb /= 10;
+        len++;
+    }
+    return (len);
 }
 
-char	*ft_itoa(int n)
+void    filler(char *str, int i, long n)
 {
-	int		i;
-	long	nb;
-	char	*dest;
-	int		sign;
+    if (n < 0)
+    {
+        str[0] = '-';
+        n = -n;
+    }
+    while (n > 0)
+    {
+        str[i] = 48 + (n % 10);
+        n /= 10;
+        i--;
+    }
+}
 
-	i = ft_count_nb(n);
-	nb = n;
-	sign = 0;
-	dest = malloc(sizeof(char) * i + 1);
-	if (!dest)
-		return (NULL);
-	if (nb < 0)
-	{
-		sign = 1;
-		*dest = '-';
-	}
-	dest[i] = '\0';
-	while (nb >= 0 + sign)
-	{
-		dest[--i] = nb % 10 + '0';
-		nb /= 10;
-	}
-	return (dest);
+char    *ft_itoa(int nb)
+{
+    long    n;
+    int        i;
+    char    *str;
+
+    n = nb;
+    i = base_len(n);
+    str = (char *)malloc(sizeof(char) * i + 1);
+    if (!str)
+        return (NULL);
+    str[i] = '\0';
+    i--;
+    if (n == 0)
+    {
+        str[0] = 48;
+        return (str);
+    }
+    filler(str, i, n);
+    return (str);
 }

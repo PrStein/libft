@@ -76,22 +76,23 @@ char	**count_letters(char const *s, char c, char **tab)
 			letters++;
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
-		if (!tab[words])
-		{
-			free_tab(tab);
-			return (NULL);
-		}
+		// if (!tab[words])
+		// {
+		// 	free_tab(tab);
+		// 	return (NULL);
+		// }
 		tab[words][letters] = '\0';
-		words++;
+		// words++;
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
+		words++;
 	}
-	i = 0;
-	while (tab[i])
-	{
-		free (tab[i]);
-		i++;
-	}
+	// i = 0;
+	// while (tab[i])
+	// {
+	// 	free (tab[i]);
+	// 	i++;
+	// }
 	return (tab);
 }
 
@@ -112,9 +113,9 @@ char	**ft_full(char const *s, char c, char **tab)
 			letters++;
 			i++;
 		}
+		words++;
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
-		words++;
 	}
 	return (tab);
 }
@@ -131,6 +132,5 @@ char	**ft_split(char const *s, char c)
 	tab = count_words(s, c, tab);
 	tab = count_letters(s, c, tab);
 	tab = ft_full(s, c, tab);
-
 	return (tab);
 }

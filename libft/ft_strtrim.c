@@ -60,6 +60,8 @@ char *ft_strtrim(char const *s1, char const *set)
     int start;
     int end;
 
+	if (!s1)
+		return (0);
     start = start_index(s1, set);
     if (start >= (int)ft_strlen(s1))
 		return ("\0");

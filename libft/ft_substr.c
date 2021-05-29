@@ -9,16 +9,16 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
     dest = NULL;
     z = 0;
     i = 0;
-    if (!s || start >= ft_strlen(s))
+    if (!s)
         return (NULL);
     while (i < start)
         i++;
     dest = malloc(sizeof(char) * len + 1);
     if (!dest)
         return (NULL);
-    while (s[i])
+    while (s[i] && start <= ft_strlen(s))
     {
-        if (i >= start && z < len)
+        if (i >= start)
         {
             dest[z] = s[i];
             z++;

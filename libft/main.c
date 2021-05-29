@@ -4,15 +4,14 @@
 
 int main (void)
 {
-    char	*str = "i just want this part #############";
-    size_t	size = 20;
-
-    char	*ret = ft_substr(str, 5, size);
-    char	*ret2 = substr(str, 5, size);
-
-
-    printf("%s\n", ret2);
-    printf("%s\n", ret);
+    char *s = "0 0 0 0 0 0 0 0";
+    char **result = ft_split(s, ' ');
+    int i = 0;
+    while (result[i])
+    {
+        printf("%s", result[i]);
+        i++;
+    }
 
 //
 //     char	*s1 = "MZIRIBMZIRIBMZE123";
