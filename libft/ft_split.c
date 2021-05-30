@@ -23,18 +23,15 @@ int	ft_charset(char a, char c)
 		return (0);
 }
 
-char	**free_tab(char **tab)
+void *ft_free(char **str, int i)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free (tab[i]);
-		i++;
-	}
-	free (tab);
-	return (tab);
+    while (i)
+    {
+         i--;
+         free(str[i]);
+    }
+    free(str);
+	return (NULL);
 }
 
 char	**count_words(char const *s, char c, char **tab)
@@ -76,23 +73,13 @@ char	**count_letters(char const *s, char c, char **tab)
 			letters++;
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
-		// if (!tab[words])
-		// {
-		// 	free_tab(tab);
-		// 	return (NULL);
-		// }
+		if (!tab[words])
+			ft_free(tab, words);
 		tab[words][letters] = '\0';
-		// words++;
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
 		words++;
 	}
-	// i = 0;
-	// while (tab[i])
-	// {
-	// 	free (tab[i]);
-	// 	i++;
-	// }
 	return (tab);
 }
 
@@ -108,11 +95,7 @@ char	**ft_full(char const *s, char c, char **tab)
 	{
 		letters = 0;
 		while (s[i] && ft_charset(s[i], c) == 0)
-		{
-			tab[words][letters] = s[i];
-			letters++;
-			i++;
-		}
+			tab[words][letters++] = s[i++];
 		words++;
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
@@ -125,7 +108,7 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 
 	tab = NULL;
-	if (!s)
+	if (!c || !s)
 		return (0);
 	while (*s && ft_charset(*s, c) == 1)
 		s++;
