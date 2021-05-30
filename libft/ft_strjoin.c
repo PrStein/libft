@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strcat(char const *s1, char const *s2, char *dest)
+char	*ft_strcat_j(char const *s1, char const *s2, char *dest)
 {
 	int		i;
 	int		j;
@@ -48,6 +48,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dest = malloc(sizeof(char) * i + 1);
 	if (!dest)
 		return (NULL);
-	dest = ft_strcat(s1, s2, dest);
+	dest = ft_strcat_j(s1, s2, dest);
 	return (dest);
 }

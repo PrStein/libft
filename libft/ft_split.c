@@ -74,7 +74,7 @@ char	**count_letters(char const *s, char c, char **tab)
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
 		if (!tab[words])
-			ft_free(tab, words);
+			tab = ft_free(tab, words);
 		tab[words][letters] = '\0';
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
