@@ -74,7 +74,10 @@ char	**count_letters(char const *s, char c, char **tab)
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
 		if (!tab[words])
-			tab = ft_free(tab, words);
+			{
+				tab = ft_free(tab, words);
+				return (NULL);
+			}
 		tab[words][letters] = '\0';
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
@@ -109,11 +112,27 @@ char	**ft_split(char const *s, char c)
 
 	tab = NULL;
 	if (!c || !s)
-		return (0);
+		return(NULL);
 	while (*s && ft_charset(*s, c) == 1)
 		s++;
-	tab = count_words(s, c, tab);
-	tab = count_letters(s, c, tab);
+	if (!(tab = count_words(s, c, tab)))
+		return (NULL);
+	if (!(tab = count_letters(s, c, tab)))
+		return (NULL);
 	tab = ft_full(s, c, tab);
 	return (tab);
 }
+/*
+int main()
+{
+	char	*s = "      split       this for   me  !       ";
+	char c  = ' ';
+	char **tab = ft_split(s, c);
+	int i = 0;
+
+	while (tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+}*/
