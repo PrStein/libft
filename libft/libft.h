@@ -38,6 +38,7 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strnstr(const char *str, const char *to_find, size_t size);
+int	ft_charset(char a, char c);
 
 
 #endif

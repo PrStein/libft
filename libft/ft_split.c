@@ -6,35 +6,24 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 14:53:23 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/26 11:59:44 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:40:51 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_charset(char a, char c)
+static void	*ft_free(char **str, int i)
 {
-	int	i;
-
-	i = 0;
-	if (a == c)
-		return (1);
-	else
-		return (0);
-}
-
-void *ft_free(char **str, int i)
-{
-    while (i)
-    {
-         i--;
-         free(str[i]);
-    }
-    free(str);
+	while (i)
+	{
+		i--;
+		free(str[i]);
+	}
+	free(str);
 	return (NULL);
 }
 
-char	**count_words(char const *s, char c, char **tab)
+static char	**count_words(char const *s, char c, char **tab)
 {
 	int	words;
 	int	i;
@@ -56,7 +45,7 @@ char	**count_words(char const *s, char c, char **tab)
 	return (tab);
 }
 
-char	**count_letters(char const *s, char c, char **tab)
+static char	**count_letters(char const *s, char c, char **tab)
 {
 	int	letters;
 	int	words;
@@ -74,19 +63,18 @@ char	**count_letters(char const *s, char c, char **tab)
 		}
 		tab[words] = malloc(sizeof(char) * letters + 1);
 		if (!tab[words])
-			{
-				tab = ft_free(tab, words);
-				return (NULL);
-			}
-		tab[words][letters] = '\0';
+		{
+			tab = ft_free(tab, words);
+			return (NULL);
+		}
+		tab[words++][letters] = '\0';
 		while (s[i] && ft_charset(s[i], c) == 1)
 			i++;
-		words++;
 	}
 	return (tab);
 }
 
-char	**ft_full(char const *s, char c, char **tab)
+static char	**ft_full(char const *s, char c, char **tab)
 {
 	int	i;
 	int	letters;
@@ -112,27 +100,15 @@ char	**ft_split(char const *s, char c)
 
 	tab = NULL;
 	if (!c || !s)
-		return(NULL);
+		return (NULL);
 	while (*s && ft_charset(*s, c) == 1)
 		s++;
-	if (!(tab = count_words(s, c, tab)))
+	tab = count_words(s, c, tab);
+	if (!tab)
 		return (NULL);
-	if (!(tab = count_letters(s, c, tab)))
+	tab = count_letters(s, c, tab);
+	if (!tab)
 		return (NULL);
 	tab = ft_full(s, c, tab);
 	return (tab);
 }
-/*
-int main()
-{
-	char	*s = "      split       this for   me  !       ";
-	char c  = ' ';
-	char **tab = ft_split(s, c);
-	int i = 0;
-
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-}*/

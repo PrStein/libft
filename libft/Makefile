@@ -40,6 +40,7 @@ SRCS =     ft_atoi.c \
         ft_putnbr_fd.c \
         ft_tolower.c \
         ft_toupper.c \
+		ft_charset.c \
 
 SRCS_O    = ${SRCS:.c=.o}
 all: $(NAME)
