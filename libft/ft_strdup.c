@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/22 15:05:42 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/22 15:25:21 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/06/03 12:38:05 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strcpy(char *dest, const char *src)
 char	*ft_strdup(const char *src)
 {
 	size_t		i;
-	char	*copy;
+	char		*copy;
 
 	copy = NULL;
 	i = ft_strlen(src);

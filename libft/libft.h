@@ -3,6 +3,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef struct	s_list
+{
+	void *content;
+	struct s_list *next;
+}	t_list;
+
+
 int	ft_atoi(const char *str);
 void	ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -39,6 +47,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strnstr(const char *str, const char *to_find, size_t size);
 int	ft_charset(char a, char c);
+
+t_list *ft_lstnew(void *content);
 
 
 #endif

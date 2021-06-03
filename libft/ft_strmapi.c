@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 16:09:10 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/05/25 16:20:04 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/06/03 12:46:29 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
 	char			*dest;
-	int a;
+	int				a;
 
 	a = ft_strlen(s);
 	dest = NULL;
