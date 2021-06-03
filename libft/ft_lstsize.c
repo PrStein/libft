@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 14:58:00 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/06/03 15:00:24 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:10:11 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_lstsize(t_list *lst)
 	i = 0;
 	if (lst)
 	{
-		while (*lst->next)
+		while (lst->next)
 		{
 			lst = lst->next;
 			i++;

@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 14:47:57 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/06/03 15:12:35 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:28:58 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstadd_front(t_list **alst, t_list *new)
 {
 	if (!alst)
-		 return (NULL);
+		 return ;
 	new->next = *alst;
-	*alst = new;;
+	*alst = new;
 }
