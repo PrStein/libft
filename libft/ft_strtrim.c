@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+static char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	size_t	i;
 
@@ -30,7 +30,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	return (dst);
 }
 
-int	ft_ischarset(char c, const char *set)
+static int	ft_ischarset(char c, const char *set)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ int	ft_ischarset(char c, const char *set)
 	return (0);
 }
 
-int	start_index(const char *s1, const char *set)
+static int	start_index(const char *s1, const char *set)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ int	start_index(const char *s1, const char *set)
 	return (i);
 }
 
-int	end_index(const char *s1, const char *set)
+static int	end_index(const char *s1, const char *set)
 {
 	int		end;
 	size_t	s1_len;
