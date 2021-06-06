@@ -18,10 +18,10 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	char			*dest;
 	int				a;
 
-	a = ft_strlen(s);
-	dest = NULL;
 	if (!s)
 		return (0);
+	a = ft_strlen(s);
+	dest = NULL;
 	i = 0;
 	if (!s || !f)
 		return (NULL);
