@@ -28,16 +28,18 @@ static char	**count_words(char const *s, char c, char **tab)
 	int	words;
 	int	i;
 
-	words = 0;
+	words = 1;
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] && ft_charset(s[i], c) == 0)
+		while (s[i] == c)
 			i++;
 		words++;
-		while (s[i] && ft_charset(s[i], c) == 1)
+		while (s[i] == c)
 			i++;
 	}
+	if (s[i] == c)
+		words--;
 	tab = malloc(sizeof(char *) * words + 1);
 	if (!tab)
 		return (NULL);
@@ -56,7 +58,7 @@ static char	**count_letters(char const *s, char c, char **tab)
 	while (s[i])
 	{
 		letters = 0;
-		while (s[i] && ft_charset(s[i], c) == 0)
+		while (s[i] == c)
 		{
 			i++;
 			letters++;
@@ -68,7 +70,7 @@ static char	**count_letters(char const *s, char c, char **tab)
 			return (NULL);
 		}
 		tab[words++][letters] = '\0';
-		while (s[i] && ft_charset(s[i], c) == 1)
+		while (s[i] == c)
 			i++;
 	}
 	return (tab);
@@ -85,10 +87,10 @@ static char	**ft_full(char const *s, char c, char **tab)
 	while (s[i])
 	{
 		letters = 0;
-		while (s[i] && ft_charset(s[i], c) == 0)
+		while (s[i] == c)
 			tab[words][letters++] = s[i++];
 		words++;
-		while (s[i] && ft_charset(s[i], c) == 1)
+		while (s[i] == c)
 			i++;
 	}
 	return (tab);
@@ -101,7 +103,7 @@ char	**ft_split(char const *s, char c)
 	tab = NULL;
 	if (!c || !s)
 		return (NULL);
-	while (*s && ft_charset(*s, c) == 1)
+	while (*s && *s == c)
 		s++;
 	tab = count_words(s, c, tab);
 	if (!tab)
