@@ -6,7 +6,7 @@
 /*   By: sadjigui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 16:03:18 by sadjigui          #+#    #+#             */
-/*   Updated: 2021/06/03 16:26:48 by sadjigui         ###   ########.fr       */
+/*   Updated: 2021/06/07 12:13:31 by sadjigui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
+	t_list	*nap;
+
 	if (!lst || !del || !*lst)
 		return ;
-	
+	while (lst && *lst)
+	{
+		nap = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = nap;
+	}
 }
